@@ -1,5 +1,6 @@
-import java.util.concurrent.atomic.AtomicInteger;
+package task_1;
 
+import java.util.concurrent.atomic.AtomicInteger;
 class TestAtomicInteger1p {
 
     public static void main (String []args) throws InterruptedException{
@@ -11,31 +12,23 @@ class TestAtomicInteger1p {
         t2.start();
         t1.join();
         t2.join();
-        System.out.println("Count"+pt.getCount());
-
-
+        System.out.println("Count = "+pt.getCount());
     }
-
-
 }
 
-
-
 class CountProblem implements  Runnable{
-    private AtomicInteger count = new AtomicInteger(0);
-
+    private AtomicInteger count = new AtomicInteger(0);  //new modification
 
     @Override
     public void run(){
         for (int i =1; i<=5; i++){
             processSomething(i);
-            count.incrementAndGet();
+            count.incrementAndGet(); //new modification
 
         }
     }
-
     public int getCount(){
-        return count.get();
+        return  count.get(); //new modification
 
     }
 
@@ -46,5 +39,4 @@ private void processSomething(int i){
             e.printStackTrace();
         }
 }
-
 }
